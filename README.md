@@ -1,3 +1,3 @@
 # My-Awesome-Blog
 
-Website Link - [My-Awesome-Blog](myfirstdjangocart.herokuapp.com)
+Website Link - [My-Awesome-Blog](https://myfirstdjangocart.herokuapp.com/blog/)
