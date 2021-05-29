@@ -1,0 +1,25 @@
+{%extends 'blog/basic.html' %} {% load static %}
+{%block title%} {{post.title}} {%endblock%}
+{%block body%}
+
+<div class="container">
+  <div class="card mt-3" style="margin: 10px 10px;">
+    <h5 class="card-header pl-2" style="font-size: 1rem;">
+      <img class="rounded-circle mr-1" src="{{ object.author.profile.image.url }}" style="height: 30px; width: 34px;">
+      <a class="mr-2" href="{%url 'userPosts' object.author.username %}">{{object.author}}</a>
+      <small class="text-muted">{{object.date_posted|date:"F d, Y"}}</small>
+    </h5>
+    <div class="card-body">
+      <h5 class="card-title">{{object.title}}</h5>
+      <p class="card-text">{{object.content}}</p>
+    </div>
+    {% if object.author == user %}
+    <div class="col mb-2">
+      <a class="btn btn-primary btn-sm" href="{% url 'postUpdate' object.post_id %}">Update</a>
+      <a class="btn btn-danger btn-sm" href="{% url 'postDelete' object.post_id %}">Delete</a>
+    </div>
+    {%endif%}
+  </div>
+</div>
+
+{%endblock%}

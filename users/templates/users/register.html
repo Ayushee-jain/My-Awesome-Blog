@@ -1,0 +1,29 @@
+{% extends 'blog/basic.html' %}
+
+{%block title%} Blog - Register {%endblock%}
+
+{%load crispy_forms_tags%}  
+<!-- allow us to use the crispy filter on any of the form -->
+
+{% block body %}
+<div class="content-section" >
+    <form method="POST"> 
+        {% csrf_token %}
+        <fieldset class="form-group mt-3 mr-4" style="border: 1px solid #dee2e6; padding: 10px 20px;">
+            <h2 class="head" style="font-weight: 400;">Join Today!</h2>
+            <div class="border-bottom mb-4"></div>
+            {{ form|crispy }}
+            <div class="form-group">
+                <button class="btn btn-outline-info mt-3" type="submit">Sign Up</button>
+            </div>
+        
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    Already Have An Account? 
+                    <a href="{% url 'login' %}" class="ml-2">Sign In</a>
+                </small>
+            </div>
+        </fieldset>
+    </form>
+</div>
+{% endblock body %}

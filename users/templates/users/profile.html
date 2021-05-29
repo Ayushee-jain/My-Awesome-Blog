@@ -1,0 +1,33 @@
+{% extends 'blog/basic.html' %}
+
+{%block title%} Blog - Profile {%endblock%}
+
+{%load crispy_forms_tags%}
+<!-- allow us to use the crispy filter on any of the form -->
+
+{% block body %}
+<!-- user is not something that we actually have to pass in it is builtin to django that repesents current current logged in user -->
+<span></span>
+<div class="container mt-3" style="padding: 10px 20px; border: 1px solid #dee2e6;">
+    <div class="row">
+        <img src="{{user.profile.image.url}}" class="rounded-circle" style="height: 98px; width: 108px;">
+        <div class="col">
+            <h2 style="height:fit-content;">{{ user.username }}</h2>
+            <p class="text-secondary" style="height:fit-content;">{{ user.email }}</p>
+        </div>
+    </div>
+    <form method="POST" enctype="multipart/form-data"> 
+        {% csrf_token %}
+        <fieldset class="form-group mt-3 mr-4">
+            <h2 class="head" style="font-weight: 400;">Profile Info</h2>
+            <div class="border-bottom mb-4"></div>
+            {{ u_form|crispy }}
+            {{ p_form|crispy }}
+            <div class="form-group">
+                <button class="btn btn-outline-info mt-3" type="submit">Update</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+{% endblock body %}
